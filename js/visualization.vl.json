@@ -1,0 +1,27 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Airbnb Locations in Melbourne (23 Sep 2020)",
+  "width": 800,
+  "height": 600,
+  "projection": {"type": "equirectangular"},
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/vivientran42/FIT3179-Test/main/js/neighbourhoods.json",
+        "format": {"type": "topojson", "feature": "neighbourhoods"}
+      },
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/vivientran42/FIT3179-Test/main/data/listings-summary.csv"
+      },
+      "mark": {"type": "circle"},
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"}
+      }
+    }
+  ],
+  "config": {}
+}
