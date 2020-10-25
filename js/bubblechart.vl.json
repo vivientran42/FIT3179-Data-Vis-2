@@ -1,0 +1,261 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 800,
+  "height": 600,
+  "title": "Number of Reviews per Airbnb Melbourne Listing (August 2020)",
+  "data": {
+    "url": "https://raw.githubusercontent.com/vivientran42/FIT3179-Test/main/data/listings-summary.csv"
+  },
+  "params": [
+    {
+      "name": "Listing_Above",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 120,
+        "step": 1,
+        "name": "Total Host Listings: "
+      }
+    },
+    {
+      "name": "LGA_Selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Banyule",
+          "Bayside",
+          "Boroondara",
+          "Brimbank",
+          "Cardinia",
+          "Casey",
+          "Darebin",
+          "Frankston",
+          "Glen Eira",
+          "Greater Dandenong",
+          "Hobsons Bay",
+          "Hume",
+          "Kingston",
+          "Knox",
+          "Manningham",
+          "Maribyrnong",
+          "Maroondah",
+          "Melbourne",
+          "Melton",
+          "Monash",
+          "Moonee Valley",
+          "Moreland",
+          "Nillumbik",
+          "Port Phillip",
+          "Stonnington",
+          "Whitehorse",
+          "Whittlesea",
+          "Wyndham",
+          "Yarra",
+          "Yarra Ranges"
+        ],
+        "labels": [
+          "Show All",
+          "Banyule",
+          "Bayside",
+          "Boroondara",
+          "Brimbank",
+          "Cardinia",
+          "Casey",
+          "Darebin",
+          "Frankston",
+          "Glen Eira",
+          "Greater Dandenong",
+          "Hobsons Bay",
+          "Hume",
+          "Kingston",
+          "Knox",
+          "Manningham",
+          "Maribyrnong",
+          "Maroondah",
+          "Melbourne",
+          "Melton",
+          "Monash",
+          "Moonee Valley",
+          "Moreland",
+          "Nillumbik",
+          "Port Phillip",
+          "Stonnington",
+          "Whitehorse",
+          "Whittlesea",
+          "Wyndham",
+          "Yarra",
+          "Yarra Ranges"
+        ],
+        "name": "LGA Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.calculated_host_listings_count > Listing_Above"},
+    {"filter": "LGA_Selection == null || datum.neighbourhood == LGA_Selection"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "number_of_reviews",
+      "type": "quantitative",
+      "title": "Number Of Reviews",
+      "axis": {"tickCount": 7},
+      "scale": {"domain": [1, 650]}
+    },
+    "y": {
+      "field": "price",
+      "type": "quantitative",
+      "title": "Price Per Night ($)",
+      "axis": {"tickCount": 6},
+      "scale": {"domain": [1, 18000]}
+    }
+  },
+  "layer": [
+    {
+      "selection": {
+        "LGA_highlight": {
+          "type": "multi",
+          "fields": ["neighbourhood"],
+          "bind": "legend"
+        }
+      },
+      "mark": "circle",
+      "encoding": {
+        "size": {
+          "field": "calculated_host_listings_count",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [50, 100, 150, 200, 250],
+            "range": [10, 50, 150, 200, 300]
+          },
+          "title": "Total Host Listings"
+        },
+        "color": {
+          "field": "neighbourhood",
+          "type": "nominal",
+          "title": "Neighbourhood",
+          "scale": {
+            "domain": [
+              "Banyule",
+              "Bayside",
+              "Boroondara",
+              "Brimbank",
+              "Cardinia",
+              "Casey",
+              "Darebin",
+              "Frankston",
+              "Glen Eira",
+              "Greater Dandenong",
+              "Hobsons Bay",
+              "Hume",
+              "Kingston",
+              "Knox",
+              "Manningham",
+              "Maribyrnong",
+              "Maroondah",
+              "Melbourne",
+              "Melton",
+              "Monash",
+              "Moonee Valley",
+              "Moreland",
+              "Nillumbik",
+              "Port Phillip",
+              "Stonnington",
+              "Whitehorse",
+              "Whittlesea",
+              "Wyndham",
+              "Yarra",
+              "Yarra Ranges"
+            ],
+            "range": [
+              "#e41a1c",
+              "#984ea3",
+              "#ff7f00",
+              "#a6cee3",
+              "#377eb8",
+              "#a65628",
+              "#a6cee3",
+              "#1f78b4",
+              "#b2df8a",
+              "#33a02c",
+              "#fb9a99",
+              "#e31a1c",
+              "#fdbf6f",
+              "#ff7f00",
+              "#cab2d6",
+              "#6a3d9a",
+              "#ffff99",
+              "#b15928",
+              "#8dd3c7",
+              "#ffffb3",
+              "#bebada",
+              "#fb8072",
+              "#80b1d3",
+              "#fdb462",
+              "#b3de69",
+              "#fccde5",
+              "#d9d9d9",
+              "#bc80bd",
+              "#ccebc5",
+              "#ffed6f"
+            ]
+          }
+        },
+        "opacity": {
+          "condition": {"selection": "LGA_highlight", "value": 0.8},
+          "value": 0.2
+        },
+        "tooltip": [
+          {
+            "field": "price",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Price"
+          },
+          {
+            "field": "number_of_reviews",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Number Of Reviews"
+          },
+          {
+            "field": "calculated_host_listings_count",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Total Host Listings"
+          },
+          {
+            "field": "neighbourhood",
+            "type": "nominal",
+            "title": "Neighbourhood"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {"field": "price", "type": "quantitative"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "datum['price'] == '15000' || datum['price'] == '7500' || datum['price'] == '9713'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    }
+  ],
+  "config": {}
+}
