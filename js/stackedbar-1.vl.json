@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+	"title": {"text":"Distribution of Room Type per LGA",       
+            "font": "Futura",
+            "fontSize": 20,
+            "fontWeight":"normal",
+            "color": "#202020"},
+  "width": 800,
+  "height": 600,
+  "data": {
+    "url": "https://raw.githubusercontent.com/vivientran42/FIT3179-Data-Vis-2/main/data/listings-summary.csv"
+  },
+  "mark": "bar",
+  "encoding": {
+    "y": {"field": "neighbourhood", "type": "nominal", "title": "LGA", "sort": "-x"},
+    "x": {"field": "neighbourhood", "aggregate": "count", "title": "Room Type (%)", "stack": "normalize","axis": {"tickCount": 5}
+},
+    "color": {
+      "type": "nominal",
+      "field": "room_type",
+			"title": "Room Type"
+          },
+    "tooltip": [
+          {
+          "field": "neighbourhood",
+          "type": "nominal",
+          "title": "Neighbourhood" 
+          },
+          {
+          "field": "room_type",
+          "type": "nominal",
+          "title": "Room Type" 
+          },
+          {
+          "field": "neighbourhood", 
+          "aggregate": "count", 
+          "title": "Number of Listings"
+          }
+    ],
+    "opacity": {
+        "condition": {"selection": "room_type_highlight", 
+                      "value": 0.9}, "value": 0.2
+      }
+  },
+  "selection": {"room_type_highlight": {
+            "type": "multi",
+            "fields": ["room_type"],
+            "bind": "legend"
+        }
+  },
+  "config": {}
+}
