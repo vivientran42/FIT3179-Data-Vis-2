@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+	"title": {"text": "Average Price per LGA",
+            "font": "Futura",
+            "fontSize": 20,
+            "fontWeight":"normal",
+            "color": "#202020"},
+  "width": 800,
+  "height": 600,
+  "data": {
+    "url": "https://raw.githubusercontent.com/vivientran42/FIT3179-Data-Vis-2/main/data/listings-summary.csv"
+  },
+  "mark": "bar",
+  "encoding": {
+    "y": {"field": "neighbourhood", "type": "nominal", "title": "LGA", "sort": "-x"},
+    "x": {"field": "price", "aggregate": "average", "title": "Average Price ($)"},
+    "color": {
+      "type": "nominal",
+      "field": "neighbourhood",
+			"title": "LGA"
+    },
+    "opacity": {"value": 0.9},
+    "tooltip": [
+          {
+          "field": "price", 
+          "aggregate": "average", 
+          "format": ".2f",
+          "title": "Average Price"
+          }
+    ]
+  },
+  "config": {}
+}
