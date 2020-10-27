@@ -19,7 +19,13 @@
 <div id="choropleth"></div>
 
 <h2>This is the second visualisation, a bubble chart.</h2>
-<div id="bubble"></div>
+<div id="stackedbar"></div>
+  
+ <h2>This is the third visualisation, a bubble chart.</h2>
+<div id="bar1"></div>
+  
+<h2>This is the fourth visualisation, a bubble chart.</h2>
+<div id="bar2"></div>
 
 <script type="text/javascript">
   var vis1 = "https://raw.githubusercontent.com/vivientran42/FIT3179-Test/main/js/choropleth-map.vl.json";
@@ -27,8 +33,18 @@
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
   
-  var vis2 = "https://raw.githubusercontent.com/vivientran42/FIT3179-Test/main/js/bubblechart.vl.json";
-  vegaEmbed('#bubble', vis2).then(function(result) {
+  var vis2 = "https://raw.githubusercontent.com/vivientran42/FIT3179-Test/main/js/stackedbar-1.vl.json";
+  vegaEmbed('#stackedbar', vis2).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+  var vis3 = "https://raw.githubusercontent.com/vivientran42/FIT3179-Test/main/js/barchart-1.vl.json";
+  vegaEmbed('#bar1', vis3).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+  var vis4 = "https://raw.githubusercontent.com/vivientran42/FIT3179-Test/main/js/barchart-2.vl.json";
+  vegaEmbed('#bar2', vis4).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>
