@@ -1,4 +1,4 @@
-#bubble {
+#stackedbar {
 	left: 100px;
 	right: 100px;
 	/*height: 1000px;
@@ -6,6 +6,20 @@
 }
 
 #choropleth {
+	left: 100px;
+	right: 100px;
+	/*height: 1000px;
+	width: 800px;*/
+}
+
+#bar1 {
+	left: 100px;
+	right: 100px;
+	/*height: 1000px;
+	width: 800px;*/
+}
+
+#bar2 {
 	left: 100px;
 	right: 100px;
 	/*height: 1000px;
