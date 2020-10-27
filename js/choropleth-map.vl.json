@@ -1,6 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "title": "Airbnb Locations in Melbourne (23 Sep 2020)",
+  "title": {"text": "Airbnb Locations in Melbourne",
+            "font": "Futura",
+            "fontSize": 20,
+            "fontWeight":"normal",
+            "color": "#202020"},
   "width": 800,
   "height": 600,
   "projection": {"type": "equirectangular"},
@@ -16,10 +20,56 @@
       "data": {
         "url": "https://raw.githubusercontent.com/vivientran42/FIT3179-Test/main/data/listings-summary.csv"
       },
-      "mark": {"type": "circle"},
+      "mark": {"type": "circle", "size": 5},
       "encoding": {
         "longitude": {"field": "longitude", "type": "quantitative"},
-        "latitude": {"field": "latitude", "type": "quantitative"}
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "color": {"field": "room_type", 
+                  "type": "nominal", 
+                  "title": "Room Type"},
+        "tooltip":[
+          {
+          "field": "price",
+          "type": "quantitative",
+          "format": ",",
+          "title": "Price" 
+          },
+          {
+          "field": "neighbourhood",
+          "type": "nominal",
+          "title": "Neighbourhood" 
+          },
+          {
+          "field": "room_type",
+          "type": "nominal",
+          "title": "Room Type" 
+          }
+        ],
+        "opacity": {
+          "condition": {"selection": "room_type_highlight", 
+                        "value": 0.9}, "value": 0
+        }
+      },
+      "selection": {"room_type_highlight": {
+            "type": "multi",
+            "fields": ["room_type"],
+            "bind": "legend"
+        }
+      },
+      "transform": [
+        {"filter": "datum.price >= price_above"}
+      ]
+    }
+  ],
+  "params": [
+    {"name": "price_above",
+      "value": 0,
+     "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 2000,
+        "step": 5,
+        "name": "Price:"
       }
     }
   ],
