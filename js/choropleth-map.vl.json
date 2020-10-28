@@ -5,8 +5,7 @@
             "fontSize": 20,
             "fontWeight":"normal",
             "color": "#202020"},
-  "width": 800,
-  "height": 600,
+  "width": "container",
   "projection": {"type": "equirectangular"},
   "layer": [
     {
