@@ -1,18 +1,15 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-	"title": {"text":"Distribution of Room Type per LGA",       
-            "font": "Futura",
-            "fontSize": 20,
-            "fontWeight":"normal",
-            "color": "#202020"},
+
   "width": "container",
+  "height": 350,
   "data": {
     "url": "https://raw.githubusercontent.com/vivientran42/FIT3179-Data-Vis-2/main/data/listings-summary.csv"
   },
   "mark": "bar",
   "encoding": {
-    "y": {"field": "neighbourhood", "type": "nominal", "title": "LGA", "sort": "-x"},
-    "x": {"field": "neighbourhood", "aggregate": "count", "title": "Room Type (%)", "stack": "normalize","axis": {"tickCount": 5}
+    "y": {"field": "neighbourhood", "type": "nominal", "title": "Local Government Area (LGA)", "sort": "-x"},
+    "x": {"field": "room_type", "aggregate": "count", "title": "Listings (%)", "stack": "normalize", "axis": {"tickCount": 5}
 },
     "color": {
       "type": "nominal",
