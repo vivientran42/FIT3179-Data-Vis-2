@@ -21,7 +21,11 @@
         "latitude": {"field": "latitude", "type": "quantitative"},
         "color": {"field": "room_type", 
                   "type": "nominal", 
-                  "title": "Room Type"},
+                  "scale": {
+                    "domain": ["Entire home/apt", "Hotel room", "Private room", "Shared room"],
+                    "range": ["#E81881", "#F15A25","#18B6AA", "#BDD63D"]},
+			"title": "Room Type"
+          },
         "tooltip":[
           {
           "field": "price",
@@ -42,7 +46,7 @@
         ],
         "opacity": {
           "condition": {"selection": "room_type_highlight", 
-                        "value": 0.9}, "value": 0
+                        "value": 0.8}, "value": 0
         }
       },
       "selection": {"room_type_highlight": {
