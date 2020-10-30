@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
 
   "width": "container",
-  "height": 350,
+  "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/vivientran42/FIT3179-Data-Vis-2/main/data/listings-summary.csv"
   },
@@ -12,8 +12,11 @@
     "x": {"field": "room_type", "aggregate": "count", "title": "Listings (%)", "stack": "normalize", "axis": {"tickCount": 5}
 },
     "color": {
-      "type": "nominal",
-      "field": "room_type",
+       "field": "room_type",
+        "type": "nominal",
+          "scale": {
+            "domain": ["Entire home/apt", "Hotel room", "Private room", "Shared room"],
+            "range": ["#18B6AA", "#E81881","#BDD63D", "#F15A25"]},
 			"title": "Room Type"
           },
     "tooltip": [
@@ -35,7 +38,7 @@
     ],
     "opacity": {
         "condition": {"selection": "room_type_highlight", 
-                      "value": 0.9}, "value": 0.2
+                      "value": 0.8}, "value": 0.2
       }
   },
   "selection": {"room_type_highlight": {
