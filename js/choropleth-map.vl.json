@@ -1,10 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "title": {"text": "Airbnb Locations in Melbourne",
-            "font": "Futura",
-            "fontSize": 20,
-            "fontWeight":"normal",
-            "color": "#202020"},
   "width": "container",
   "height": 500,
   "projection": {"type": "equirectangular"},
