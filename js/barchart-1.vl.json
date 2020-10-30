@@ -1,31 +1,31 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-	"title": {"text": "Listings per LGA",
-            "font": "Futura",
-            "fontSize": 20,
-            "fontWeight":"normal",
-            "color": "#202020"},
   "width": "container",
+  "height": 350,
   "data": {
     "url": "https://raw.githubusercontent.com/vivientran42/FIT3179-Data-Vis-2/main/data/listings-summary.csv"
   },
   "mark": "bar",
   "encoding": {
-    "y": {"field": "neighbourhood", "type": "nominal", "title": "LGA", "sort": "-x"},
-    "x": {"field": "neighbourhood", "aggregate": "count", "title": "Number of Listings"},
-    "color": {
-      "type": "nominal",
-      "field": "neighbourhood",
-			"title": "LGA"
-    },
-    "opacity": {"value": 0.9},
+    "y": {"field": "neighbourhood", "type": "nominal", "title": "Local Government Area (LGA)", "sort": "-x"},
+    "x": {"field": "no_listings", "type":"quantitative","title": "Number of Listings"},
+    "opacity": {"value": 0.8},
     "tooltip": [
           {
-          "field": "neighbourhood", 
-          "aggregate": "count", 
+          "field": "no_listings", 
           "title": "Number of Listings"
           }
-    ]
+    ],
+    "color":{"value": "#18B6AA"}
   },
+  "transform": [
+    {"aggregate": [{
+       "op": "count",
+       "field": "neighbourhood",
+       "as": "no_listings"
+      }],
+      "groupby": ["neighbourhood"]},
+    {"filter": "datum.no_listings > 566"}
+  ],
   "config": {}
 }
