@@ -1,30 +1,76 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "width": "container",
-  "height": 350,
-  "data": {
-    "url": "https://raw.githubusercontent.com/vivientran42/FIT3179-Data-Vis-2/main/data/listings-summary.csv"
-  },
-  "mark": "bar",
-  "encoding": {
-    "y": {"field": "neighbourhood", "type": "nominal", "title": "Local Government Area (LGA)", "sort": "-x"},
-    "x": {"field": "no_listings", "type":"quantitative","title": "Number of Listings"},
-    "opacity": {"value": 0.9},
-    "tooltip": [
+  "height": 500,
+  "projection": {"type": "equirectangular"},
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/vivientran42/FIT3179-Test/main/js/neighbourhoods.json",
+        "format": {"type": "topojson", "feature": "neighbourhoods"}
+      },
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/vivientran42/FIT3179-Test/main/data/listings-summary.csv"
+      },
+      "mark": {"type": "circle", "size": 5},
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "color": {"field": "room_type", 
+                  "type": "nominal", 
+                  "title": "Room Type"},
+        "tooltip":[
           {
-          "field": "no_listings", 
-          "title": "Number of Listings"
+          "field": "price",
+          "type": "quantitative",
+          "format": ",",
+          "title": "Price" 
+          },
+          {
+          "field": "neighbourhood",
+          "type": "nominal",
+          "title": "Neighbourhood" 
+          },
+          {
+          "field": "room_type",
+          "type": "nominal",
+          "title": "Room Type" 
           }
-    ]
-  },
-  "transform": [
-    {"aggregate": [{
-       "op": "count",
-       "field": "neighbourhood",
-       "as": "no_listings"
-      }],
-      "groupby": ["neighbourhood"]},
-    {"filter": "datum.no_listings > 566"}
+        ],
+        "opacity": {
+          "condition": {"selection": "room_type_highlight", 
+                        "value": 0.9}, "value": 0
+        }
+      },
+      "selection": {"room_type_highlight": {
+            "type": "multi",
+            "fields": ["room_type"],
+            "bind": "legend"
+        }
+      },
+      "transform": [
+        {"filter": "datum.price >= price_above"}
+      ]
+    }
   ],
-  "config": {}
+  "params": [
+    {"name": "price_above",
+      "value": 0,
+     "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 2000,
+        "step": 5,
+        "name": "Minimum Price: "
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": "transparent"
+     }
+  }
 }
