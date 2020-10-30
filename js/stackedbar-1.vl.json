@@ -1,38 +1,25 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+
   "width": "container",
-  "height": 500,
-  "projection": {"type": "equirectangular"},
-  "layer": [
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/vivientran42/FIT3179-Test/main/js/neighbourhoods.json",
-        "format": {"type": "topojson", "feature": "neighbourhoods"}
-      },
-      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
-    },
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/vivientran42/FIT3179-Test/main/data/listings-summary.csv"
-      },
-      "mark": {"type": "circle", "size": 5},
-      "encoding": {
-        "longitude": {"field": "longitude", "type": "quantitative"},
-        "latitude": {"field": "latitude", "type": "quantitative"},
-        "color": {"field": "room_type", 
-                  "type": "nominal", 
-                  "scale": {
-                    "domain": ["Entire home/apt", "Hotel room", "Private room", "Shared room"],
-                    "range": ["#E81881", "#F15A25","#18B6AA", "#BDD63D"]},
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/vivientran42/FIT3179-Data-Vis-2/main/data/listings-summary.csv"
+  },
+  "mark": "bar",
+  "encoding": {
+    "y": {"field": "neighbourhood", "type": "nominal", "title": "Local Government Area (LGA)", "sort": "-x"},
+    "x": {"field": "room_type", "aggregate": "count", "title": "Listings (%)", "stack": "normalize", "axis": {"tickCount": 5}
+},
+    "color": {
+       "field": "room_type",
+        "type": "nominal",
+          "scale": {
+            "domain": ["Entire home/apt", "Hotel room", "Private room", "Shared room"],
+            "range": ["#E81881", "#F15A25","#18B6AA", "#BDD63D"]},
 			"title": "Room Type"
           },
-        "tooltip":[
-          {
-          "field": "price",
-          "type": "quantitative",
-          "format": ",",
-          "title": "Price" 
-          },
+    "tooltip": [
           {
           "field": "neighbourhood",
           "type": "nominal",
@@ -42,39 +29,23 @@
           "field": "room_type",
           "type": "nominal",
           "title": "Room Type" 
+          },
+          {
+          "field": "neighbourhood", 
+          "aggregate": "count", 
+          "title": "Number of Listings"
           }
-        ],
-        "opacity": {
-          "condition": {"selection": "room_type_highlight", 
-                        "value": 0.8}, "value": 0
-        }
-      },
-      "selection": {"room_type_highlight": {
+    ],
+    "opacity": {
+        "condition": {"selection": "room_type_highlight", 
+                      "value": 0.8}, "value": 0.2
+      }
+  },
+  "selection": {"room_type_highlight": {
             "type": "multi",
             "fields": ["room_type"],
             "bind": "legend"
         }
-      },
-      "transform": [
-        {"filter": "datum.price >= price_above"}
-      ]
-    }
-  ],
-  "params": [
-    {"name": "price_above",
-      "value": 2000,
-     "bind": {
-        "input": "range",
-        "min": 0,
-        "max": 2000,
-        "step": 5,
-        "name": "Maximum Price: "
-      }
-    }
-  ],
-  "config": {
-    "view": {
-      "stroke": "transparent"
-     }
-  }
+  },
+  "config": {}
 }
