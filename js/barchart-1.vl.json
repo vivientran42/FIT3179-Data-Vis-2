@@ -8,7 +8,7 @@
   "mark": "bar",
   "encoding": {
     "y": {"field": "neighbourhood", "type": "nominal", "title": "Local Government Area (LGA)", "sort": "-x"},
-    "x": {"field": "no_listings", "type":"quantitative","title": "Number of Listings"},
+    "x": {"field": "no_listings", "type":"quantitative","title": "Number of Listings", "axis": {"gridOpacity": 0}},
     "opacity": {"value": 0.8},
     "tooltip": [
           {
