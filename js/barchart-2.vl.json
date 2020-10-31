@@ -7,7 +7,7 @@
   },
   "mark": "bar",
   "encoding": {
-    "y": {"field": "neighbourhood", "type": "nominal", "title": "LGA", "sort": "-x"},
+    "y": {"field": "neighbourhood", "type": "nominal", "title": "Local Government Area (LGA)", "sort": "-x"},
     "x": {"field": "average_price", "type":"quantitative","title": "Average Price ($)", "axis": {"gridOpacity": 0}},
     "opacity": {"value": 0.8},
     "tooltip": [
@@ -15,6 +15,10 @@
           "field": "average_price", 
           "format": ".2f",
           "title": "Average Price"
+          },
+          {
+          "field": "neighbourhood", 
+          "title": "LGA"
           }
     ],
     "color": {"value": "#E81881"}
