@@ -8,7 +8,7 @@
   "mark": "bar",
   "encoding": {
     "y": {"field": "neighbourhood", "type": "nominal", "title": "LGA", "sort": "-x"},
-    "x": {"field": "average_price", "type":"quantitative","title": "Average Price ($)"},
+    "x": {"field": "average_price", "type":"quantitative","title": "Average Price ($)", "axis": {"gridOpacity": 0}},
     "opacity": {"value": 0.8},
     "tooltip": [
           {
@@ -28,5 +28,5 @@
       "groupby": ["neighbourhood"]},
     {"filter": "datum.average_price > 153"}
   ],
-  "config": {}
+  "config": {"view": {"stroke": "transparent"}}
 }
