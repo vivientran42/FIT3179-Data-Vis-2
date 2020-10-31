@@ -27,5 +27,5 @@
       "groupby": ["neighbourhood"]},
     {"filter": "datum.no_listings > 566"}
   ],
-  "config": {}
+  "config": {"view": {"stroke": "transparent"}}
 }
