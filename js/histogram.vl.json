@@ -3,6 +3,8 @@
   "data": {
     "url": "https://raw.githubusercontent.com/vivientran42/FIT3179-Data-Vis-2/main/data/listings-summary.csv"
   },
+  "width": "container",
+  "height": 250,
   "mark": "bar",
   "encoding": {
     "x": {
