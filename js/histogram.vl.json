@@ -1,0 +1,30 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/vivientran42/FIT3179-Data-Vis-2/main/data/listings-summary.csv"
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "bin": {"maxbins": 10},
+      "field": "availability_365",
+      "title": "Maximum Booking Length (Days)",
+      "axis": {"gridOpacity": 0}
+    },
+    "y": {
+      "aggregate": "count",
+      "title": "Count of Listings",
+      "axis": {"gridOpacity": 0}
+    },
+    "color": {"value": "#F15A25"},
+    "tooltip": [
+      {
+        "field": "availability_365",
+        "aggregate": "count",
+        "title": "Number of Listings"
+      }
+    ],
+    "opacity": {"value": 0.8}
+  },
+  "config": {"view": {"stroke": "transparent"}}
+}
