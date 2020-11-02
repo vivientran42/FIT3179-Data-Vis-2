@@ -26,10 +26,14 @@
 	width: 800px;*/
 }
 
-body{
+body {
     font-family: 'Open Sans', sans-serif;
 }
 
 p {
- color: #303030;
+    color: #303030;
+}
+
+h2 {
+    color: #303030;
 }
