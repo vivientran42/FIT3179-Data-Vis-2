@@ -10,7 +10,7 @@
     "x": {
       "bin": {"maxbins": 10},
       "field": "availability_365",
-      "title": "Maximum Booking Length (Days)",
+      "title": "Maximum Availability (Days)",
       "axis": {"gridOpacity": 0}
     },
     "y": {
