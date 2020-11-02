@@ -56,13 +56,13 @@
         }
       },
       "transform": [
-        {"filter": "datum.price >= price_above"}
+        {"filter": "datum.price <= max_price"}
       ]
     }
   ],
   "params": [
-    {"name": "price_above",
-      "value": 0,
+    {"name": "max_price",
+      "value": 2000,
      "bind": {
         "input": "range",
         "min": 0,
