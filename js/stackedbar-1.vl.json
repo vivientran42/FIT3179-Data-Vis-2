@@ -16,7 +16,7 @@
         "type": "nominal",
           "scale": {
             "domain": ["Entire home/apt", "Hotel room", "Private room", "Shared room"],
-            "range": ["#E81881", "#F15A25","#18B6AA", "#BDD63D"]},
+            "range": ["#E81881", "#BDD63D","#18B6AA", "#F15A25"]},
 			"title": "Room Type"
           },
     "tooltip": [
