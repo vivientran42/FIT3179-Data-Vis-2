@@ -88,6 +88,7 @@
           <div class="description description-right">
             <h2>Accommodation Type per LGA</h2>
             <p>This visualisation shows the breakdown of type of accommodation in each local government area (LGA). The most common offerings are entire homes/apartments and private rooms. Interestingly, the LGAs have been ordered by descending number of listings. As such, there seems to be a trend the most common accommodation type in LGAs with many listings is entire homes/apartments.</p>
+            <div id="vis6"  class="vis-container"></div>
           </div>
         </div>
       
@@ -152,12 +153,14 @@
   var specVis3 = "https://raw.githubusercontent.com/vivientran42/FIT3179-Data-Vis-2/main/js/barchart-1.vl.json";
   var specVis4 = "https://raw.githubusercontent.com/vivientran42/FIT3179-Data-Vis-2/main/js/barchart-2.vl.json";
   var specVis5 = "https://raw.githubusercontent.com/vivientran42/FIT3179-Data-Vis-2/main/js/histogram.vl.json";
+  var specVis6 = "https://raw.githubusercontent.com/vivientran42/FIT3179-Data-Vis-2/main/js/piechart.vl.json";
+
 
   vegaEmbed('#vis1', specVis1, {"actions": false}).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
   
-   vegaEmbed('#vis2', specVis2, {"actions": false}).then(function(result) {
+  vegaEmbed('#vis2', specVis2, {"actions": false}).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 
@@ -172,6 +175,10 @@
   vegaEmbed('#vis5', specVis5, {"actions": false}).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);	
+	
+  vegaEmbed('#vis6', specVis6, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
 	
 </script>
 </body>
