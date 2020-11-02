@@ -4,6 +4,7 @@
   "data": {
     "url": "https://raw.githubusercontent.com/vivientran42/FIT3179-Data-Vis-2/main/data/listings-summary.csv"
   },
+  "height": 100,
   "mark": "arc",
   "encoding": {
     "theta": {
