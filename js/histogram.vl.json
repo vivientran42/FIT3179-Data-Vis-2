@@ -8,7 +8,7 @@
   "mark": "bar",
   "encoding": {
     "x": {
-      "bin": {"maxbins": 10},
+      "bin": {"maxbins": 20, "extent": [0, 365]},
       "field": "availability_365",
       "title": "Maximum Availability (Days)",
       "axis": {"gridOpacity": 0}
